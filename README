@@ -1,0 +1,6 @@
+# dc506_geoip_bot
+Simple IP geolocalization telegram bot with ASN info retrieval using
+hackertarget.com's API lookup service. This was made for the groups consumption
+but can be modified to suit anybodys needs.
+
+made with ❤ by cedric.
