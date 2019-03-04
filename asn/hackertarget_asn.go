@@ -74,6 +74,7 @@ func CheckIP(ip string) bool {
 	return true
 }
 
+// CheckAS returns true/false if ASN address is valid
 func CheckAS(as string) bool {
 	if as[:1] != "AS" {
 		return false
@@ -101,6 +102,8 @@ func Query(data string) (string, error) {
 	return string(body), err
 }
 
+// GetIPInfo calls the query funcion and then the parsing function to fill the
+// ASNIP struct with the necessary info
 func (i *ASNIP) GetIPInfo(ip string) bool {
 	i.IP = net.ParseIP(ip)
 	resp, err := Query(ip)
@@ -115,6 +118,9 @@ func (i *ASNIP) GetIPInfo(ip string) bool {
 	return true
 }
 
+// GetASInfo calls the query funcion and then the parsing function to fill the
+// ASNInfo struct with the necessary info
+// TODO: do something when ASN doesn't exists on API's database.
 func (i *ASNInfo) GetASInfo(as string) bool {
 	i.Number, _ = strconv.Atoi(as[2:]) // set AS number, skipping "AS"
 
@@ -130,6 +136,7 @@ func (i *ASNInfo) GetASInfo(as string) bool {
 	return true
 }
 
+// ParseASN parses data from API, from header to list of CIDRs
 func (i *ASNInfo) ParseASN(r string) bool {
 	var (
 		//err error
@@ -147,6 +154,7 @@ func (i *ASNInfo) ParseASN(r string) bool {
 	return true
 }
 
+// ParseASNIP parses data from API, only header because no other info is added.
 func (i *ASNIP) ParseASNIP(r string) bool {
 	var (
 		err error

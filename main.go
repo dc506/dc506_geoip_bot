@@ -173,7 +173,7 @@ func main() {
 						Idk(msg, bot, "That's not a valid ASN, dude.")
 						return
 					}
-					// get asn info about IP
+					// get info about ASN
 					asn_info := &asn.ASNInfo{}
 					if asn_info.GetASInfo(as) == false {
 						asn_info = nil
